@@ -6,6 +6,8 @@ const { v4 } = require("uuid");
 require("./src/db")
 const PatientModel = require("./src/model/Patient.model");
 const VaccinationModel = require("./src/model/Vaccination.model");
+const path = require('path')
+
 
 const app = express();
 
@@ -174,4 +176,10 @@ app.use("/gq", graphqlHTTP({
     graphiql: true
 }))
 
-app.listen(9090, () => console.log("Server started at PORT : 9090"))
+app.get('/', (req, res) =>{
+    res.send("Sucess")
+});
+
+const PORT = process.env.PORT || 9090
+
+app.listen(PORT, () => console.log("Server started at PORT : 9090"))
